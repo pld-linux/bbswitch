@@ -9,24 +9,26 @@
 
 %define		rel	1
 %define		modname	bbswitch
-Summary:	Disable discrete graphics (currently nvidia only)
+Summary:	Disable discrete graphics (currently nVidia only)
 Name:		%{modname}%{_alt_kernel}
 Version:	0.7
 Release:	%{rel}
 License:	GPL v2+
-URL:		https://github.com/Bumblebee-Project/bbswitch
+Group:		Base/Kernel
 Source0:	https://github.com/Bumblebee-Project/bbswitch/archive/v%{version}.tar.gz?/%{modname}-%{version}.tgz
 # Source0-md5:	b9df5ea40109ef9766448a0577c798e6
-Group:		Base/Kernel
+URL:		https://github.com/Bumblebee-Project/bbswitch
 %{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build >= 3:2.6.20.2}
 BuildRequires:	rpmbuild(macros) >= 1.379
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Disable discrete graphics (currently nvidia only).
+bbswitch is a kernel module which automatically detects the required
+ACPI calls for two kinds of Optimus laptops. It has been verified to
+work with "real" Optimus and "legacy" Optimus laptops.
 
 %package -n kernel%{_alt_kernel}-misc-%{modname}
-Summary:	Disable discrete graphics (currently nvidia only)
+Summary:	Disable discrete graphics (currently nVidia only)
 Release:	%{rel}@%{_kernel_ver_str}
 Group:		Base/Kernel
 Requires(post,postun):	/sbin/depmod
@@ -36,7 +38,9 @@ Requires(postun):	%releq_kernel
 %endif
 
 %description -n kernel%{_alt_kernel}-misc-%{modname}
-Disable discrete graphics (currently nvidia only).
+bbswitch is a kernel module which automatically detects the required
+ACPI calls for two kinds of Optimus laptops. It has been verified to
+work with "real" Optimus and "legacy" Optimus laptops.
 
 %prep
 %setup -qn %{modname}-%{version}
