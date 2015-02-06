@@ -11,12 +11,12 @@
 %define		modname	bbswitch
 Summary:	Disable discrete graphics (currently nVidia only)
 Name:		%{modname}%{_alt_kernel}
-Version:	0.7
+Version:	0.8
 Release:	%{rel}
 License:	GPL v2+
 Group:		Base/Kernel
 Source0:	https://github.com/Bumblebee-Project/bbswitch/archive/v%{version}.tar.gz?/%{modname}-%{version}.tgz
-# Source0-md5:	b9df5ea40109ef9766448a0577c798e6
+# Source0-md5:	5b116b31ace3604ddf9d1fc1f4bc5807
 URL:		https://github.com/Bumblebee-Project/bbswitch
 %{?with_dist_kernel:BuildRequires:	kernel%{_alt_kernel}-module-build >= 3:2.6.20.2}
 BuildRequires:	rpmbuild(macros) >= 1.379
